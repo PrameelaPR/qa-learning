@@ -1,9 +1,21 @@
 
 1)  Make a new repo called 'running' on github site
 
+
 2)  Copy the repo onto your computer
+hema:github hema$ git clone https://github.com/PrameelaPR/running
+Cloning into 'running'...
+remote: Counting objects: 3, done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
 
 3)  Create a branch called 'stretch'
+
+hema:running hema$ git checkout -b stretch
+Switched to a new branch 'stretch'
+hema:running hema$ git branch
+  master
+* stretch
 
 4)  Create a file called 'static-stretches.txt' with the following content
 
@@ -11,17 +23,40 @@ a.  Alternating toe touches - Swing leg forward and touch toes with opposite han
 
 b.  Leg swing - hold a bench/table/pillar, kick leg to the side as high as you can and let it swing down across the body.  Like a pendulum with the legs. (20 per leg)
 
+hema:running hema$ cat >static-stretches.txt
+a.  Alternating toe touches - Swing leg forward and touch toes with opposite hand. Alternate leg.  (20 per leg)
+
+b.  Leg swing - hold a bench/table/pillar, kick leg to the side as high as you can and let it swing down across the body.  Like a pendulum with the legs. (20 per leg)
+
 5)  Commit this file into your local repo with an appropriate message
+
+hema:running hema$ git add static-stretches.txt
+hema:running hema$ git commit -m "This is commit for static-stretches file"
+[stretch 3205bea] This is commit for static-stretches file
+ 1 file changed, 3 insertions(+)
+ create mode 100644 static-stretches.txt
+
 
 6)  Create a file called 'dynamic-streches.txt' with the following content
 
 Exercises to be done after running 
 
+hema:running hema$ cat>dynamic-streches.txt
+Exercises to be done after running
+
 7)  Commit this file into your local repo with an appropriate message
+hema:running hema$ git add dynamic-streches.txt
+hema:running hema$ git status
+hema:running hema$ git commit -m "This is commit for dynamic-stretches file"
+[stretch 3bcaf09] This is commit for dynamic-stretches file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 dynamic-streches.txt
 
 8)  Push your local changes to github
+hema:running hema$ git push origin stretch
 
 9)  Create a PR (pull request) for your branch
+
 
 To submit answers for this test:
 edit this file, paste ur answers below each question and update this file back to github
