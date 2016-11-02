@@ -1,0 +1,6 @@
+
+MySQL Tutorial
+https://www.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Beginner.html
+
+Lets not do the whole thing, study upto (and including) "2.8  Deleting Rows - DELETE FROM"
+
