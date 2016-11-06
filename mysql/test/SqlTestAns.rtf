@@ -1,7 +1,8 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 TimesNewRomanPSMT;\f2\fnil\fcharset0 Cambria;
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf510
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\froman\fcharset0 TimesNewRomanPSMT;\f2\fnil\fcharset0 Cambria;
 }
-{\colortbl;\red255\green255\blue255;\red217\green11\blue0;}
+{\colortbl;\red255\green255\blue255;\red217\green11\blue0;\red20\green0\blue65;\red14\green0\blue45;
+\red32\green0\blue99;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{lower-alpha\}.}{\leveltext\leveltemplateid102\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat4\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{lower-alpha\}.}{\leveltext\leveltemplateid202\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}
@@ -116,16 +117,15 @@ Records: 274207  Deleted: 0  Skipped: 0  Warnings: 274210\
 \ls2\ilvl1
 \f0 d.	agency: Mindshare\
 \
-\
-\pard\tx1412\tx1440\tx6660\pardeftab720\li1412\fi-332\ri720
 \ls2\ilvl1
-\b \cf0 INSERT INTO USER(NAME,USERNAME,`agency_id`,EMAIL) VALUES('GARY TURNER','GTUNER', 'gturner@mindshare.com','MINDSHARE');
-\b0 \
+\f1 \
+\pard\tx1412\tx1440\pardeftab720\li1412\fi-332\ri720
+\ls2\ilvl1\cf2 \'93MINDSHARE\'94 is a varchar, but user.agency_id field is int.  Redo using agency_id of mindshare.\cf0 \
 \pard\tx1412\tx1440\pardeftab720\li1412\fi-332\ri720
 \ls2\ilvl1
-\f1 \cf0 \
-\ls2\ilvl1\cf2 \'93MINDSHARE\'94 is a varchar, but user.agency_id field is int.  Redo using agency_id of mindshare.\cf0 \
-\
+\b \cf3 INSERT INTO USER(NAME,USERNAME,EMAIL) VALUES('GARY TURNER','GTUNER', 'gturner@mindshare.com');\
+\ls2\ilvl1
+\b0 \cf0 \
 \pard\tx692\tx720\pardeftab720\li692\fi-332\ri720
 \ls3\ilvl1
 \f0 \cf0 4.	Update the name of Publisher \'93Media6\'94
@@ -338,21 +338,15 @@ mysql> SHOW CREATE TABLE AD_IMPRESSION_DATA;\
 \pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
 \ls5\ilvl1
 \f0 \cf0 15.	  What is the total no. of impressions served for Campaign Id 100\
-\pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
-\ls5\ilvl1
-\b \cf0 mysql> SELECT SUM(EXPECTED_DAILY_IMPS) AS 'TOTAL NUMBER OF IMPRESSIONS FOR ID 100' FROM CAMPAIGN WHERE ID=100;\
-\pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
-\ls5\ilvl1
-\b0 \cf0 +----------------------------------------+\
-| TOTAL NUMBER OF IMPRESSIONS FOR ID 100 |\
-+----------------------------------------+\
-|                                   1000 |\
-+----------------------------------------+\
-1 row in set (0.00 sec)\
 \pard\tx720\tx1440\pardeftab720\ri720
 
-\f1 \cf0 \
-\cf2 CAMPAIGN table only has expected impressions, not the actually served impression.  Use AD_IMPRESSION_DATA table instead.\cf0 \
+\f1 \cf2 CAMPAIGN table only has expected impressions, not the actually served impression.  Use AD_IMPRESSION_DATA table instead.\
+\
+\
+\
+
+\b \cf4 SELECT SUM(IMPS) AS 'TOTAL NUMBER OF IMPRESSIONS FOR ID 100' FROM AD_IMPRESSION_DATA WHERE CAMPAIGN_ID=100;
+\b0 \cf0 \
 \
 \pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
 \ls6\ilvl0
@@ -408,17 +402,17 @@ mysql> SHOW CREATE TABLE AD_IMPRESSION_DATA;\
 \ls7\ilvl1
 \f0 c.	no. of impressions\
 \
+\ls7\ilvl1
+\f1 \
+\pard\tx1440\pardeftab720\li1440\fi-360\ri720
+\ls7\ilvl1\cf2 Let me rephrase the question.  Get a summary report of ALL the impressions served per campaign, and under each campaign, per publisher, ignoring publishers who served under 100 impressions overall per campaign.  Clue: use group by and having.\
 \
+\ls7\ilvl1
+\b \cf5 SELECT DISTINCT CAMPAIGN_ID AS 'CAMPAIGN',PUBLISHER_ID AS 'PUBLISHER',IMPS AS 'NO. OF IMPRESSIONS' FROM `AD_IMPRESSION_DATA` GROUP BY CAMPAIGN_ID\
+HAVING IMPS >100\
 \pard\tx1440\pardeftab720\li1440\fi-360\ri720
 \ls7\ilvl1
-\b \cf0 \
-SELECT CAMPAIGN_ID AS 'CAMPAIGN',PUBLISHER_ID AS 'PUBLISHER',IMPS AS 'NO. OF IMPRESSIONS' FROM `AD_IMPRESSION_DATA`\
-WHERE IMPS >100;
-\b0 \
-\pard\tx1440\pardeftab720\li1440\fi-360\ri720
-\ls7\ilvl1
-\f1 \cf0 \
-\ls7\ilvl1\cf2 Let me rephrase the question.  Get a summary report of ALL the impressions served per campaign, and under each campaign, per publisher, ignoring publishers who served under 100 impressions overall per campaign.  Clue: use group by and having.\cf0 \
+\b0 \cf0 \
 \
 \pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
 \ls8\ilvl1
@@ -440,12 +434,16 @@ EXPECTED_DAILY_IMPS DESC;\
 \f0 \cf0 19.	  List publishers who have served ads to more than 115 sites in the month of June\
 \pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
 \ls8\ilvl1
-\b \cf0 SELECT PUBLISHER_ID FROM AD_IMPRESSION_DATA WHERE MONTH(HIT_DATE)='06' AND IMPS>115;
-\b0 \
-\pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
-\ls8\ilvl1
 \f1 \cf0 \
-\ls8\ilvl1\cf2 Here the focus is on 115 sites, not impressions.  IMPS > 155 will get me all publishers that served > 115 ads, even if all the 115 were played on the same site.  I need all publishers who served ads to 115 sites.\cf0 \
+\pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
+\ls8\ilvl1\cf2 Here the focus is on 115 sites, not impressions.  IMPS > 155 will get me all publishers that served > 115 ads, even if all the 115 were played on the same site.  I need all publishers who served ads to 115 sites.\
+\
+\ls8\ilvl1
+\b \cf3 SELECT DISTINCT PUBLISHER_ID ,COUNT(WEBSITE) FROM AD_IMPRESSION_DATA\
+WHERE  MONTH(HIT_DATE)='06'\
+GROUP BY PUBLISHER_ID \
+HAVING COUNT(WEBSITE)>115 
+\b0 \cf0 \
 \
 \pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
 \ls8\ilvl1
@@ -478,6 +476,7 @@ LIMIT 5;
 \pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
 \ls8\ilvl1
 \f1 \cf0 \
+\pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
 \ls8\ilvl1\cf2 Excellent\cf0 \
 \
 \pard\tx720\tx750\pardeftab720\li720\fi-360\ri720
@@ -502,25 +501,26 @@ LIMIT 5;
 \f1 \
 
 \f0 GROUP BY CAMPAIGN_ID;\
+\pard\pardeftab720\ri720
 
-\f1 \
+\f1 \cf0 \
 \
+\pard\pardeftab720\ri720
 
-\f0 SELECT HIT_DATE, CAMPAIGN_ID, SUM(IMPS)
+\f0 \cf0 \
+\
+SELECT HIT_DATE, CAMPAIGN_ID, SUM(IMPS)
 \f1 \
 
 \f0 FROM AD_IMPRESSION_DATA
 \f1 \
 
-\f0 WHERE HIT_DATE>='2016-03-01' and HIT_DATE<='2016-03-30'
-\f1 \
-\pard\pardeftab720\ri720
+\f0 GROUP BY CAMPAIGN_ID\
 
-\f0\b \cf0 GROUP BY HIT_DATE
-\b0 ;
-\f1 \
-\
+\b \cf5 HAVING MONTH(HIT_DATE)='03'
+\f1\b0 \cf0 \
 \pard\pardeftab720\ri720
 \cf2 By \'93campaign impression\'94 I implied impressions by campaign, by date.  Now can you try again?\
+\pard\pardeftab720\ri720
 \cf0 \
 }
