@@ -1,0 +1,29 @@
+Topics covered
+
+1).QA responsibilities
+2)Why become a QA/Tester
+3)Why is software testing Important
+4)Characteristics of successful QA/tester
+5)Prerequisites of successful QA/tester
+6)Why QA gets paid so much?
+7)QA and QC differences
+8)Structure of development team
+9)QA/tester job responsibilities
+10)what is software testing?
+11)What are requirements?
+12)How testing is done?
+13)Defect catching process
+14)Why do testers miss bugs?
+15)How to minimize human errors
+16)Manual testing and Automation testing
+17)When to automate?
+18)SDLC
+19)BRD
+20)Project plan
+21)sign off
+22)FRD
+23)Unit testing
+24)Severity and Priority
+25)elements of defect log
+26)Mantis-Bug tracking tool
+
