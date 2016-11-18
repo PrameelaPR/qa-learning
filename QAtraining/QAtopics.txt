@@ -27,3 +27,4 @@ Topics covered
 25)elements of defect log
 26)Mantis-Bug tracking tool
 
+
