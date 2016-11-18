@@ -1,0 +1,12 @@
+Mantis 
+http://s415027759.onlinehome.us/login_page.php
+Username:training
+Password:admin
+
+Click view issues 
+In that click defect ids
+ 0000582
+0000583
+0000584
+0000585
+0000586
