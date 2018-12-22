@@ -1,0 +1,74 @@
+1.  Make a directory called 'health'
+
+2.  Make two subdirectories under health called 'heart-rate', 'sleep'
+
+3.  Create a file called 'myhealth.txt' with the following content under dir health.  Use the echo command and redirect the text to the file.
+My health records
+
+4.  Create two files under heart-rate, named 'rate1' and 'rate2', enter the following lines into both (you can use vi editor to create the file directly there, or create the file in text edit and copy it into heart-rate directory)
+Even if you’re not an athlete, knowledge about your heart rate 
+
+can help you monitor your fitness level — and it might even help 
+
+you spot developing health problems.
+
+Your heart rate, or pulse, is the number of times your heart beats per minute. 
+
+Normal heart rate varies from person to person. 
+
+Knowing yours can be an important heart-health gauge.
+
+
+5.  Create two more files under heart-rate, 'sleep1', 'sleep2' and enter 10 lines of text in both.  Each line should contain only one word.
+
+6.  Oops, those files should be under health/sleep.  So move them from heart-rate to sleep.
+
+7.  List the files under heart-rate
+
+8.  Print the full path of the current dir you are in 
+
+9.  List the files under your home directory
+
+10.  List the contexts of sleep1, one page at a time
+
+11.  Print out the first 5 lines of sleep2
+
+12.  Print out the last 5 lines of sleep2
+
+13.  Print out the total no. of lines in sleep2
+
+14.  Print the total number of words in sleep2
+
+15.  Find the lines that contain the word "if" in rate1 (only whole words, .e.g "fifty" will not count)
+
+16.  Find the lines that DOES NOT contain the word "if" in rate1 (only whole words, words like "fifty" will not count)
+
+17.  List the first 4 lines of rate1, and create a new file called "rate3" (hint:use redirection)
+
+18.  Create a new file called rate4 using the first 3 lines of rate1, and last two lines of rate2, using >> operator for appending
+
+19.  Sort the words in sleep1 
+
+20.  Find the lines in sleep1 that contains the letter "h", and print the words in sorted order (hint: use pipes)
+
+21.  Start 2 sleep commands for 300 seconds as a background processes.
+
+22.  Print the process ids of the sleep commands started above.  (hint:  list the processes and search for "sleep")
+
+23.  List all the files under home dir that start with the letter "a"
+
+24.  zip heart1 and heart2 as separate zips
+
+25.  List out the text contents of heart1.gz and heart2.gz
+
+26.  un-zip heart1 and heart2 zips.
+
+27.  Find the size of health directory, list the size in human readable format
+
+28.  Print the last 10 commands you used
+
+29.  delete directory "health" and all the subdirs and files under it in one command
+
+30.  Create a environment variable called DATE and set the value "Oct 24 2016" to it.  
+
+31.  Print out the value in above variable DATE.
